@@ -38,4 +38,11 @@ export class Order {
         if (value !== null && !(value instanceof Date)) throw new Error("Confirmed date must be a Date or null");
         this.#confirmedDate = value;
     }
+
+    // ===== Methods =====
+    // Optional method to confirm the order
+    confirmOrder() {
+        this.#confirmed = true;
+        this.#confirmedDate = new Date();
+    }
 }
