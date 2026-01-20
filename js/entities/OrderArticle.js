@@ -21,4 +21,11 @@ export class OrderArticle {
         if (typeof value !== "number" || value <= 0) throw new Error("Quantity must be positive number");
         this.#quantity = value;
     }
+    // ===== Methods =====
+    toJSON() {
+        return {
+            id: this.#id,
+            quantity: this.#quantity,
+        }
+    }
 }

@@ -40,6 +40,15 @@ export class Order {
     }
 
     // ===== Methods =====
+    toJSON() {
+        return {
+            id: this.#id,
+            orderDate: this.#orderDate,
+            confirmed: this.#confirmed,
+            confirmedDate: this.confirmedDate
+        }
+    }
+
     // Optional method to confirm the order
     confirmOrder() {
         this.#confirmed = true;

@@ -26,4 +26,12 @@ export class Category {
         if (!value || value.length < 1) throw new Error("Name is required");
         this.#name = value;
     }
+
+    // ===== Methods =====
+    toJSON() {
+        return {
+            id: this.#id,
+            name: this.#name,
+        }
+    }
 }
