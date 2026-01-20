@@ -1,0 +1,51 @@
+@startuml
+' =========================
+' Diagrama de Classes
+' =========================
+title Diagramme de classes shop
+
+' =========================
+' Definição das classes
+' =========================
+class User {
+    - id : Number
+    - username: String
+    - email: String
+    - password: String
+}
+
+class Order {
+    - id : Number
+    - order_date : date
+    - confirmed : boolean
+    - coonfirmedDate : date
+}
+
+class OrderArticle {
+    - id: float
+    - quantity : float
+}
+
+class Article {
+    - id : Number
+    - name: String
+    - stock: Number
+    - price: Number
+    - totalOrdered : Number
+}
+
+User "1"--"*" Order
+Order "1"--"*" OrderArticle
+OrderArticle "1"--"1" Article
+
+
+' =========================
+' Relacionamentos
+' =========================
+
+
+
+' =========================
+' Notas / Comentários
+' =========================
+@enduml
