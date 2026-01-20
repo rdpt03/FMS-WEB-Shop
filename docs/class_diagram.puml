@@ -27,8 +27,19 @@ class Article {
     - totalOrdered : Number
 }
 
+class SubCategory {
+    - id : Number
+    - name : String
+}
+class Category{
+    - id : Number
+    - id : String
+}
+
 User "1"--"*" Order
 Order "1"--"*" OrderArticle
 OrderArticle "*"--"1" Article
 
+Category "1"--"*" SubCategory
+SubCategory "1"--"*" Article
 @enduml
