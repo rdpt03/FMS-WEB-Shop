@@ -9,9 +9,6 @@ export class Category {
     constructor(id, name) {
         this.id = id;
         this.name = name;
-        this.stock = stock;
-        this.price = price;
-        this.totalOrdered = totalOrdered;
     }
 
     // ==== Getters Setters
