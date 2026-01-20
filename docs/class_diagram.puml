@@ -1,12 +1,5 @@
 @startuml
-' =========================
-' Diagrama de Classes
-' =========================
 title Diagramme de classes shop
-
-' =========================
-' Definição das classes
-' =========================
 class User {
     - id : Number
     - username: String
@@ -36,16 +29,6 @@ class Article {
 
 User "1"--"*" Order
 Order "1"--"*" OrderArticle
-OrderArticle "1"--"1" Article
+OrderArticle "*"--"1" Article
 
-
-' =========================
-' Relacionamentos
-' =========================
-
-
-
-' =========================
-' Notas / Comentários
-' =========================
 @enduml
