@@ -1,6 +1,7 @@
 // article.js
 // Class representing a SubCategory in the shop system
-import { Category } from "./Category.js";
+
+import { Category } from "./Category";
 
 export class SubCategory {
     #id;
@@ -29,7 +30,7 @@ export class SubCategory {
 
     get category() { return this.#category; }
     set category(value) {
-        if (!value || value.length < 1) throw new Error("Name is required");
+        if (!(value instanceof Category)) throw new Error("you must give a category");
         this.#name = value;
     }
 
