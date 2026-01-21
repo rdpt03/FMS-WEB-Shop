@@ -9,7 +9,7 @@ fetch('./../components/navbar.html')
   })
   .catch(err => console.error('Erro ao carregar navbar:', err));
 
-fetch('./../components/sidebar.html')
+fetch('./../components/sidebar/')
   .then(response => response.text())
   .then(html => {
     sidebarContainer.innerHTML = html;
