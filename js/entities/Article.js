@@ -1,18 +1,22 @@
 // article.js
 // Class representing an Article/Product in the shop system
 
+import { SubCategory } from "./SubCategory.js";
+
 export class Article {
     #id;
     #name;
     #stock;
     #price;
     #totalOrdered;
+    #subCategory;
 
-    constructor(id, name, stock, price, totalOrdered = 0) {
+    constructor(id, name, stock, price, subCategory, totalOrdered = 0) {
         this.id = id;
         this.name = name;
         this.stock = stock;
         this.price = price;
+        this.subCategory = subCategory
         this.totalOrdered = totalOrdered;
     }
 
@@ -40,10 +44,10 @@ export class Article {
         this.#price = value;
     }
 
-    get totalOrdered() { return this.#totalOrdered; }
-    set totalOrdered(value) {
-        if (typeof value !== "number" || value < 0) throw new Error("Total ordered must be non-negative number");
-        this.#totalOrdered = value;
+    get subCategory() { return this.#subCategory; }
+    set subCategory(value) {
+        if (!value instanceof SubCategory) throw new Error("This must me a SubCategory");
+        this.#subCategory = value;
     }
 
     // ===== Methods =====
@@ -53,8 +57,9 @@ export class Article {
             name: this.#name,
             stock: this.#stock,
             price: this.#price,
-            totalOrdered :this.#price
-            // password intentionally omitted
+            subCategory : this.#subCategory.id,
+            totalOrdered :this.#totalOrdered
+            
         }
     }
 }
