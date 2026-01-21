@@ -1,14 +1,18 @@
 // article.js
 // Class representing a SubCategory in the shop system
+import { Category } from "./Category.js";
 
-export class Category {
+export class SubCategory {
     #id;
     #name;
+    #category;
 
     // ===== Constructor =====
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
+    constructor(id, name, category) {
+        this.#id = id;
+        this.#name = name;
+        this.#category = category
+        console.log("ddd",this.#category)
     }
 
     // ==== Getters Setters
@@ -29,6 +33,7 @@ export class Category {
         return {
             id: this.#id,
             name: this.#name,
+            category: this.#category.id,
         }
     }
 }
