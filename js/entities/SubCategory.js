@@ -12,7 +12,6 @@ export class SubCategory {
         this.#id = id;
         this.#name = name;
         this.#category = category
-        console.log("ddd",this.#category)
     }
 
     // ==== Getters Setters
@@ -24,6 +23,12 @@ export class SubCategory {
 
     get name() { return this.#name; }
     set name(value) {
+        if (!value || value.length < 1) throw new Error("Name is required");
+        this.#name = value;
+    }
+
+    get category() { return this.#category; }
+    set category(value) {
         if (!value || value.length < 1) throw new Error("Name is required");
         this.#name = value;
     }
