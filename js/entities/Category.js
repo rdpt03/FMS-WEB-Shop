@@ -1,9 +1,10 @@
 // article.js
 // Class representing a Category in the shop system
-
+import { SubCategory } from "./SubCategory.js"
 export class Category {
     #id;
     #name;
+    #subCategories = [];
 
     // ===== Constructor =====
     constructor(id, name) {
@@ -22,6 +23,15 @@ export class Category {
     set name(value) {
         if (!value || value.length < 1) throw new Error("Name is required");
         this.#name = value;
+    }
+
+    get subCategories() { return this.#subCategories; }
+    set subCategories(value) {
+        //check if items are subCategories
+        if (!value.every(item => item instanceof SubCategory)) {
+            throw new Error("All items must be SubCategory instances");
+        }
+        this.#subCategories = value;
     }
 
     // ===== Methods =====
