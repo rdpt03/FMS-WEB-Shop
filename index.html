@@ -6,8 +6,26 @@
     <title>Página Inicial</title>
 </head>
 <body>
+    <!-- Navbar -->
     <div id="navbar"></div>
-    <h1>Olá, Bootstrap carregado!</h1>
+
+    <!-- Main container -->
+    <div class="d-flex" style="min-height: calc(100vh - 56px);">
+
+        <div id="sidebar"></div>
+
+        <main class="flex-grow-1 p-3">
+            Main Content
+        </main>
+    </div>
+
+   
+    <style src="./style.css"></style>
+    <!-- Scripts -->
+    <script type="module" src="./js/entities/Article.js"></script>
+    <script type="module" src="./js/localStorage/loadData.js"></script>
+
+
     <script src="./js/view-loader/importBootstrap.js"></script>
     <script src="./js/view-loader/importNavBarAndFooter.js"></script>
 </body>
