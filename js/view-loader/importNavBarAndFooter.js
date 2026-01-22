@@ -35,7 +35,7 @@ fetch('./../components/sidebar/')
 
       // Category link
       const categoryLink = document.createElement("a");
-      categoryLink.href = `#${category.name.toLowerCase()}`;
+      categoryLink.href = '?filter_by=category&category_id='+category.id;
       categoryLink.textContent = category.name;
       categoryLink.classList.add("nav-link", "text-white");
 
@@ -51,7 +51,7 @@ fetch('./../components/sidebar/')
           subLi.classList.add("nav-item");
 
           const subLink = document.createElement("a");
-          subLink.href = `#${subCateg.name.toLowerCase()}`;
+          subLink.href = '?filter_by=sub_category&category_id='+subCateg.id;
           subLink.textContent = subCateg.name;
           subLink.classList.add("nav-link", "text-white", "small"); // smaller text for subitems
 
