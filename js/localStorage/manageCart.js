@@ -20,6 +20,12 @@ export function saveCart(cart){
 }
 
 
+// ========== Function to empty the card ==========
+export function emptyCart(){
+    localStorage.setItem(CART_NAME_LOCALSTORAGE,JSON.stringify([]));
+}
+
+
 // ========== Function to get the card with oop articles ==========
 export function getCartToOOPArticles(){
     let cartList = [];
