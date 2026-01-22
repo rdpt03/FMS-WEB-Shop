@@ -1,5 +1,5 @@
-import { getCategories } from "./../localStorage/loadData.js";
-
+import { getCategories, getArticles } from "./../localStorage/loadData.js";
+import { renderArticles } from "./load-articles.js"
 
 // ====================== TOPBAR ======================
 const navbarContainer = document.getElementById('navbar');
@@ -14,6 +14,9 @@ fetch('./../components/navbar.html')
 fetch('./../components/sidebar/')
   .then(response => response.text())
   .then(html => {
+    //get article list 
+    let articles = getArticles();
+
     // Inject HTML template into the sidebar container
     const sidebarContainer = document.getElementById('sidebar');
     sidebarContainer.innerHTML = html;
@@ -35,7 +38,13 @@ fetch('./../components/sidebar/')
 
       // Category link
       const categoryLink = document.createElement("a");
-      categoryLink.href = '?filter_by=category&category_id='+category.id;
+      categoryLink.href = '#';
+      categoryLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        const filtered = articles.filter(a => a.subCategory.category.id === category.id);
+        renderArticles(filtered);
+      });
+
       categoryLink.textContent = category.name;
       categoryLink.classList.add("nav-link", "text-white");
 
@@ -51,9 +60,16 @@ fetch('./../components/sidebar/')
           subLi.classList.add("nav-item");
 
           const subLink = document.createElement("a");
-          subLink.href = '?filter_by=sub_category&category_id='+subCateg.id;
+          subLink.href = '#';
           subLink.textContent = subCateg.name;
           subLink.classList.add("nav-link", "text-white", "small"); // smaller text for subitems
+          
+          //---event to update the articles---
+          subLink.addEventListener("click", (e) => {
+                e.preventDefault();
+                const filteredSub = articles.filter(a => a.subCategory.id === subCateg.id);
+                renderArticles(filteredSub);
+            });
 
           subLi.appendChild(subLink);
           subUl.appendChild(subLi);
