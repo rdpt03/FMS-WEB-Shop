@@ -5,34 +5,38 @@ let articles = [];
 //get url params
 const params = new URLSearchParams(window.location.search);
 
-//get if is caregory or subcategory
+//get if is category or subcategory
 const filterBy = params.get('filter_by');
 
-//
+//get the id of it
 const category_id = Number(params.get('category_id')); 
-console.log(typeof category_id);
+
+//if category given
 if(filterBy == 'category'){
     articles = getArticleByCategoryId(category_id);
 }
 
+//if sub category
 else if(filterBy == 'sub_category'){
     articles = getArticleBySubCategoryId(category_id);
 }
 
+//else
 else{
     articles = getArticles();
 }
 
-
-
-
+//get container
 const container = document.getElementById("articles-container");
 
+//for each article create the card
 articles.forEach(article => {
+    //create div
     const col = document.createElement("div");
-    // Reduzimos o padding horizontal da coluna com px-1
+    //appli bootsrap classes
     col.className = "col-3 col-md-4 d-flex justify-content-center p-1";
 
+    //prepair the html code
     col.innerHTML = `
         <div class="card" style="width: 300px; height: 400px; background-color:#bbbbbb;">
             <img src="${article.img}" 
@@ -58,28 +62,27 @@ articles.forEach(article => {
                 </div>
                 <div class="row">
                     <!-- Left column -->
-                    <!-- Left column -->
-<div class="col-md-6">
-    <a href="${article.link}"
-       class="btn btn-primary mt-2 w-100 d-flex justify-content-center align-items-center"
-       style="height: 48px;">
-        Details
-    </a>
-</div>
+                    <div class="col-md-6">
+                        <a href="${article.link}"
+                        class="btn btn-primary mt-2 w-100 d-flex justify-content-center align-items-center"
+                        style="height: 48px;">
+                            Details
+                        </a>
+                    </div>
 
-<!-- Right Column -->
-<div class="col-md-6">
-    <a href="${article.link}"
-       class="btn btn-primary mt-2 w-100 d-flex justify-content-center align-items-center"
-       style="height: 48px;">
-        Ajouter au Panier
-    </a>
-</div>
-
+                    <!-- Right Column -->
+                    <div class="col-md-6">
+                        <a href="${article.link}"
+                        class="btn btn-primary mt-2 w-100 d-flex justify-content-center align-items-center"
+                        style="height: 48px;">
+                            Ajouter au Panier
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     `;
 
+    //apply
     container.appendChild(col);
 });
