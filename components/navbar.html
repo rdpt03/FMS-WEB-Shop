@@ -6,7 +6,7 @@
     <div class="flex-grow-1"></div>
 
     <form class="d-flex gap-2">
-        <button class="btn btn-outline-primary d-flex align-items-center gap-2" href="#">
+        <a class="btn btn-outline-primary d-flex align-items-center gap-2" href="#/card" data-link>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
               <path d="M19.5 22C20.3284 22 21 21.3284 21 20.5C21 19.6716 20.3284 19 19.5 19C18.6716 19 18 19.6716 18 20.5C18 21.3284 18.6716 22 19.5 22Z"
@@ -18,7 +18,7 @@
               <path d="M20 15H7H5.23077C3.44646 15 2.5 15.7812 2.5 17C2.5 18.2188 3.44646 19 5.23077 19H19.5"
                   stroke="currentColor" stroke-width="1.5"/>
             </svg>
-        </button>
+        </a>
         <button class="btn btn-outline-primary d-flex align-items-center gap-2" href="#">
             <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor">
                 <path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -27,3 +27,13 @@
         </button>
     </form>
 </nav>
+<script>
+document.body.addEventListener("click", event => {
+    if (event.target.closest("[data-link]")) {
+        event.preventDefault();
+        const link = event.target.closest("[data-link]");
+        const url = link.dataset.url || link.href; // support button or <a>
+        navigateTo(url);
+    }
+});
+</script>
