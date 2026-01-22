@@ -1,7 +1,7 @@
 // article.js
 // Class representing a SubCategory in the shop system
 
-import { Category } from "./Category";
+import { Category } from "./Category.js";
 
 export class SubCategory {
     #id;
