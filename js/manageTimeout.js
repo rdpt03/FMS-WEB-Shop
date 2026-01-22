@@ -9,11 +9,12 @@ function resetIdleTimer() {
 
     idleTimer = setTimeout(() => {
         goHome();
+
         emptyCart();
 
         // Restart timer to keep checking inactivity continuously
         resetIdleTimer();
-    }, 5*1000);
+    }, 2*60*1000);
 }
 
 // Event listeners
