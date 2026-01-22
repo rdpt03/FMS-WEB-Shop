@@ -65,6 +65,10 @@ export function getArticles(){
     
     return listOfArticles
 }
+//function to get a article by id0
+export function getArticleByid(id){
+    return getArticles().find(article => article.id === id);
+}
 
 export function getArticleByCategoryId(categoryId){
     if(typeof categoryId !== 'number' || isNaN(categoryId)){
