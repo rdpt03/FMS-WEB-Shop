@@ -15,7 +15,6 @@ export function getCategories(){
 
     categories.forEach(category => {
         //get subcategories
-        console.log(getSubCategoriesByCategory(category));
         category.subCategories = getSubCategoriesByCategory(category);
         listOfCategories.push(category);
     });
@@ -64,8 +63,6 @@ export function getArticles(){
         listOfArticles.push(new Article(storedArticle.id, storedArticle.name ,storedArticle.stock, storedArticle.price, subCategory, storedArticle.img, storedArticle.totalOrdered))
     });
     
-    //foreach
-    console.log(listOfArticles);
     return listOfArticles
 }
 
