@@ -4,6 +4,7 @@ import { Category } from './../entities/Category.js';
 
 // Load categories from LocalStorage and subcategories
 
+// ====================================== function to get categories ======================================
 export function getCategories(){
     //get the data
     const listOfCategories = [];
@@ -22,6 +23,7 @@ export function getCategories(){
     return listOfCategories
 }
 
+// ====================================== function to get sub categories by category ======================================
 function getSubCategoriesByCategory(category){
     const listOfSubCategoriesForTheCategory = [];
     //get from json
@@ -39,6 +41,7 @@ function getSubCategoriesByCategory(category){
     return listOfSubCategoriesForTheCategory;
 }
 
+// ====================================== function to get sub categories ======================================
 export function getSubCategories(){
     const subCategoriesList = [];
     getCategories().forEach(category => {
@@ -50,7 +53,9 @@ export function getSubCategories(){
     return subCategoriesList;
 }
 
+
 // ============================================== ARTICLES ============================================== 
+// ====================================== function to get a articles ======================================
 export function getArticles(){
     const listOfArticles = [];
     const listOfCategories = getSubCategories();
@@ -65,17 +70,24 @@ export function getArticles(){
     
     return listOfArticles
 }
-//function to get a article by id0
+
+
+// ====================================== function to get a article by id ======================================
 export function getArticleByid(id){
     return getArticles().find(article => article.id === id);
 }
 
+
+// ====================================== function to get a article by category ======================================
 export function getArticleByCategoryId(categoryId){
     if(typeof categoryId !== 'number' || isNaN(categoryId)){
         throw new Error("category id must be a number");
     }
     return getArticles().filter(article => article.subCategory.category.id === categoryId);
 }
+
+
+// ====================================== function to get a article by subCateogory ======================================
 export function getArticleBySubCategoryId(categoryId){
     if(typeof categoryId !== 'number' || isNaN(categoryId)){
         throw new Error("category id must be a number");
