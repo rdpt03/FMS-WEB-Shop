@@ -1,4 +1,6 @@
-import { getCartToOOPArticles, removeArticleFromCard, saveCart } from "../localStorage/manageCart.js";
+import { emptyCart, getCartToOOPArticles, removeArticleFromCard, saveCart } from "../localStorage/manageCart.js";
+import { goHome } from "./../router.js"
+import { showAlert } from "./load_alert.js";
 
 //main function
 export function loadCardArticles(){
@@ -101,7 +103,15 @@ export function renderCart(list) {
 
     const orderButton = document.getElementById('place_order');
     orderButton.addEventListener("click", () => {
-        console.log("order placed, to do!!")
+        //save into a placed order
+        //todo...
+        
+        //empty card
+        emptyCart();
+        
+        //show good alert
+        showAlert("Commande passé avec succes")
+        //redirect
+        goHome();
     });
-
 }
