@@ -1,1 +1,18 @@
-<div id="cart-container" class="row justify-content-center g-3"></div>
+<div class="d-flex flex-column flex-lg-row align-items-start" style="padding-left: 10%; padding-right: 10%;">
+    <!-- Div grande -->
+    <div id="cart-container" class="row justify-content-center g-3 flex-grow-1 w-100 order-2 order-lg-1">
+        <!--content injected by js/view-loader/load_card.js-->
+
+    </div>
+
+    <!-- Div pequena (placeholder) -->
+    <div class="flex-shrink-0 mt-3 mt-lg-0 mb-3 mb-lg-0 ms-lg-3 p-3 order-1 order-lg-2" style="width: 100%; max-width: 400px; background-color: lightgray;">
+        <center><h5>Recapitulatif</h5></center>
+        <br />
+        <h5>Total du panier : <span id="totalArticles"></span>€</h5>
+        <br />
+        <h5>Frais de port : <span id="deliveryFee"></span>€</h5>
+        <br />
+        <h5>Total : <span id="fullTotal"></span>€</h5>
+    </div>
+</div>
