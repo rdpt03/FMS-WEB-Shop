@@ -10,13 +10,15 @@ export class Article {
     #price;
     #totalOrdered;
     #subCategory;
+    #img;
 
-    constructor(id, name, stock, price, subCategory, totalOrdered = 0) {
+    constructor(id, name, stock, price, subCategory, img, totalOrdered = 0) {
         this.id = id;
         this.name = name;
         this.stock = stock;
         this.price = price;
-        this.subCategory = subCategory
+        this.subCategory = subCategory;
+        this.img = img;
         this.totalOrdered = totalOrdered;
     }
 
@@ -30,6 +32,12 @@ export class Article {
     set name(value) {
         if (!value || value.length < 1) throw new Error("Name is required");
         this.#name = value;
+    }
+
+    get img() { return this.#img; }
+    set img(value) {
+        if (!value || value.length < 1) throw new Error("Image link is required");
+        this.#img = value;
     }
 
     get stock() { return this.#stock; }
@@ -58,6 +66,7 @@ export class Article {
             stock: this.#stock,
             price: this.#price,
             subCategory : this.#subCategory.id,
+            img : this.#img,
             totalOrdered :this.#totalOrdered
             
         }
