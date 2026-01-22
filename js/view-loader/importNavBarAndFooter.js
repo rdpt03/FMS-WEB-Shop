@@ -1,9 +1,8 @@
 import { getCategories } from "./../localStorage/loadData.js";
 
-// Seleciona o elemento onde o navbar será inserido
+
+// ====================== TOPBAR ======================
 const navbarContainer = document.getElementById('navbar');
-const sidebarContainer = document.getElementById('sidebar');
-// Carrega o HTML do navbar
 fetch('./../components/navbar.html')
   .then(response => response.text())
   .then(html => {
@@ -11,6 +10,7 @@ fetch('./../components/navbar.html')
   })
   .catch(err => console.error('Erro ao carregar navbar:', err));
 
+  // ====================== SIDEBAR ======================
 fetch('./../components/sidebar/')
   .then(response => response.text())
   .then(html => {
