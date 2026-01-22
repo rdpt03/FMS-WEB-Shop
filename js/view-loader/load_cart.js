@@ -31,16 +31,16 @@ export function renderCart(list) {
         //add
         totalArticles+=totalOfThisArticle;
     });
-    
-    totalArticlesHTML.innerHTML = totalArticles;
+
+    totalArticlesHTML.innerHTML = Math.trunc(totalArticles * 100)/100;
 
     //set delivery fee
     const deliveryFeeHTML = document.getElementById("deliveryFee");
     deliveryFeeHTML.innerHTML = deliveryFee;
 
     //set total
-    const fullTotalHtml = document.getElementById("deliveryFee");
-    deliveryFeeHTML.innerHTML = deliveryFee;
+    const fullTotalHtml = document.getElementById("fullTotal");
+    fullTotalHtml.innerHTML = Math.trunc((totalArticles+deliveryFee) * 100) / 100;
     // ================================= end of totals ================================= 
 
     list.forEach(articleOnCart => {
@@ -98,4 +98,10 @@ export function renderCart(list) {
             renderCart(getCartToOOPArticles());
         });
     });
+
+    const orderButton = document.getElementById('place_order');
+    orderButton.addEventListener("click", () => {
+        console.log("order placed, to do!!")
+    });
+
 }
