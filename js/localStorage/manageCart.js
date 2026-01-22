@@ -56,5 +56,19 @@ export function addToCart(article, quantity) {
 
     // save
     saveCart(cart);
-    
+
+}
+
+
+// ========== Function to delete from card ==========
+export function removeArticleFromCard(article) {
+    let card = getCart();
+    //the article came from card is just the is not the object
+    let articleToRemove = card.findIndex(articleOnCard => articleOnCard.article_id === article.article.id);
+
+    if (articleToRemove > -1) {
+        card.splice(articleToRemove, 1); // <- remove just one element
+        saveCart(card); // update
+        return card
+    }
 }
