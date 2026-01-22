@@ -1,3 +1,4 @@
+import { initSidebar } from "./view-loader/loadSidebar.js";
 // router.js
 // Main container where all views will be injected
 const mainContainer = document.getElementById("app");
@@ -56,10 +57,20 @@ async function loadView(htmlPath, onLoadCallback) {
 // Determines which route to load based on the current URL
 async function router() {
     const currentPath = getCurrentRoute();
-    // Fallback to "/" route if path is not found
     const route = routes[currentPath] || routes["/"];
+    //load Main content
     await loadView(route.html, route.onLoad);
+
+    //Show or hide sidebar
+    const sidebarContainer = document.getElementById("sidebar");
+    if (currentPath === "/") {
+        sidebarContainer.style.display = "block";  // Mostra
+        await initSidebar();                        // Inicializa o sidebar
+    } else {
+        sidebarContainer.style.display = "none";   // Oculta
+    }
 }
+
 
 // ======= SPA Navigation =======
 // Updates the URL and calls the router
