@@ -1,6 +1,4 @@
-import { getCartToOOPArticles } from "../localStorage/manageCart.js";
-import { addToCart } from "../localStorage/manageCart.js";
-import { getArticles } from "./../localStorage/loadData.js"
+import { getCartToOOPArticles, removeArticleFromCard, saveCart } from "../localStorage/manageCart.js";
 
 //main function
 export function loadCardArticles(){
@@ -12,6 +10,7 @@ export function loadCardArticles(){
 
 //function to render it 
 export function renderCart(list) {
+    console.log(list);
     //get container
     const container = document.getElementById("cart-container");
     if (!container){ console.error("cart-container not found, please load this file after the html via the router "); return;}; //check
@@ -24,7 +23,7 @@ export function renderCart(list) {
         col.className = "justify-content-center";
 
         col.innerHTML = `
-            <div class="card mb-3" style="background-color: lightgray; width: 100%; position: relative;">
+            <div class="card mb-3" style="background-color: lightgray; width: 80%; position: relative;">
                 <div class="d-flex align-items-center">
                     <!-- Imagem à esquerda -->
                     <img src="${articleOnCart.article.img}" 
@@ -46,7 +45,7 @@ export function renderCart(list) {
                     </div>
 
                     <!-- Ícone no canto superior direito -->
-                    <div style="position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></div>
+                    <div class="cursor-help remove-from-cart" style="position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></div>
                 </div>
             </div>
             `;
@@ -56,11 +55,14 @@ export function renderCart(list) {
     });
 
     // add event shopping cart
-    const cartButtons = container.querySelectorAll(".add-to-cart");
+    const cartButtons = container.querySelectorAll(".remove-from-cart");
     cartButtons.forEach((btn, index) => {
         btn.addEventListener("click", () => {
-            addToCart(list[index], 1)
-            // add logic here soon
+            //remove the item
+            list = removeArticleFromCard(list[index], 1);
+            //refresh 
+            saveCart(list);
+            renderCart(getCartToOOPArticles());
         });
     });
 }
