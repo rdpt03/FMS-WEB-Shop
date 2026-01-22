@@ -22,7 +22,7 @@ const routes = {
             // Dynamically import the module for the Cart view
             const cartModule = await import("./view-loader/load_cart.js");
             // Initialize the Cart view (renders articles in the DOM)
-            cartModule.loadArticles();
+            cartModule.loadCardArticles();
         }
     }
 };
