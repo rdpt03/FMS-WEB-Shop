@@ -62,7 +62,6 @@ export function renderArticles(list) {
     cartButtons.forEach((btn, index) => {
         btn.addEventListener("click", () => {
             addToCart(list[index], 1)
-            // add logic here soon
         });
     });
 }
