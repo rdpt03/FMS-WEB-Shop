@@ -19,8 +19,10 @@ const routes = {
     "/card": {
         html: "./../view/cart.html",
         onLoad: async () => {
-            // Placeholder for future card view logic
-            console.log("Card view loaded");
+            // Dynamically import the module for the Cart view
+            const cartModule = await import("./view-loader/load_cart.js");
+            // Initialize the Cart view (renders articles in the DOM)
+            cartModule.loadArticles();
         }
     }
 };
