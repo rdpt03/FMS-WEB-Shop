@@ -11,9 +11,6 @@ export function getCategories(){
     const stored = JSON.parse(localStorage.getItem("categories")) || '[]';
     const categories = stored.map(a => new Category(a.id, a.name));
 
-    // Display categories in page
-    const container = document.getElementById('articlesContainer');
-
     categories.forEach(category => {
         //get subcategories
         category.subCategories = getSubCategoriesByCategory(category);
