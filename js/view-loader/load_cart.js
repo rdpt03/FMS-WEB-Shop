@@ -10,7 +10,6 @@ export function loadCardArticles(){
 
 //function to render it 
 export function renderCart(list) {
-    console.log(list);
     //get container
     const container = document.getElementById("cart-container");
     if (!container){ console.error("cart-container not found, please load this file after the html via the router "); return;}; //check
@@ -45,7 +44,15 @@ export function renderCart(list) {
                     </div>
 
                     <!-- Ícone no canto superior direito -->
-                    <div class="cursor-help remove-from-cart" style="position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; background-color: red; border-radius: 50%;"></div>
+                    <div class="cursor-help remove-from-cart" 
+                        style="position: absolute; top: 5px; right: 5px; width: 24px; height: 24px; color: red; display: flex; align-items: center; justify-content: center; cursor: pointer;" 
+                        data-bs-toggle="button">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ff0000" stroke-width="1.5">
+                            <path d="M20 9L18.005 20.3463C17.8369 21.3026 17.0062 22 16.0353 22H7.96474C6.99379 22 6.1631 21.3026 5.99496 20.3463L4 9" fill="#ff0000"></path>
+                            <path d="M20 9L18.005 20.3463C17.8369 21.3026 17.0062 22 16.0353 22H7.96474C6.99379 22 6.1631 21.3026 5.99496 20.3463L4 9H20Z" stroke="#ff0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M21 6H15.375M3 6H8.625M8.625 6V4C8.625 2.89543 9.52043 2 10.625 2H13.375C14.4796 2 15.375 2.89543 15.375 4V6M8.625 6H15.375" stroke="#ff0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
                 </div>
             </div>
             `;
