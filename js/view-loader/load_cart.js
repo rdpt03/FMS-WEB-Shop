@@ -10,12 +10,38 @@ export function loadCardArticles(){
 
 //function to render it 
 export function renderCart(list) {
+    let deliveryFee = 2.99;
     //get container
     const container = document.getElementById("cart-container");
     if (!container){ console.error("cart-container not found, please load this file after the html via the router "); return;}; //check
 
     //clean actual list
     container.innerHTML = ""; 
+
+    // ================================= totals ================================= 
+    //set total of all articles 
+    const totalArticlesHTML = document.getElementById("totalArticles");
+    //set var to 0
+    let totalArticles = 0;
+
+    //will increase price according to article and quantity
+    list.forEach(articleOnCart => {
+        //get the price
+        let totalOfThisArticle = articleOnCart.article.price * articleOnCart.quantity;
+        //add
+        totalArticles+=totalOfThisArticle;
+    });
+    
+    totalArticlesHTML.innerHTML = totalArticles;
+
+    //set delivery fee
+    const deliveryFeeHTML = document.getElementById("deliveryFee");
+    deliveryFeeHTML.innerHTML = deliveryFee;
+
+    //set total
+    const fullTotalHtml = document.getElementById("deliveryFee");
+    deliveryFeeHTML.innerHTML = deliveryFee;
+    // ================================= end of totals ================================= 
 
     list.forEach(articleOnCart => {
         const col = document.createElement("div");
