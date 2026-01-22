@@ -8,7 +8,7 @@ export function initArticlesView() {
     //check if container got
     
 
-    renderArticles(articles,);
+    renderArticles(articles);
 }
 //function to render it 
 export function renderArticles(list) {
