@@ -61,7 +61,7 @@ export function getArticles(){
     //get categories 
     storedArticles.forEach(storedArticle => {
         const subCategory = listOfCategories.find(subCateg => subCateg.id === storedArticle.subCategory)
-        listOfArticles.push(new Article(storedArticle.id, storedArticle.name ,storedArticle.stock, storedArticle.price, subCategory, storedArticle.totalOrdered ))
+        listOfArticles.push(new Article(storedArticle.id, storedArticle.name ,storedArticle.stock, storedArticle.price, subCategory, storedArticle.img, storedArticle.totalOrdered))
     });
     
     //foreach
