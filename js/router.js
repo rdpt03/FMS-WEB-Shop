@@ -75,8 +75,19 @@ async function router() {
 // ======= SPA Navigation =======
 // Updates the URL and calls the router
 function navigateTo(url) {
-    window.location.hash = url;
+    // Remove # se houver
+    const cleanUrl = url.startsWith("#") ? url.slice(1) : url;
+
+    // Atualiza a hash do browser
+    window.location.hash = cleanUrl;
+
+    // Chama o router para carregar a view
     router();
+}
+
+// ======= Redirecionar para a página principal =======
+export function goHome() {
+    navigateTo("/"); // "/" corresponde à rota inicial definida
 }
 
 // ======= Link Interception =======
