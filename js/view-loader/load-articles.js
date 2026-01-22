@@ -1,3 +1,4 @@
+import { addToCart } from "../localStorage/manageCart.js";
 import { getArticles } from "./../localStorage/loadData.js"
 
 
@@ -60,7 +61,7 @@ export function renderArticles(list) {
     const cartButtons = container.querySelectorAll(".add-to-cart");
     cartButtons.forEach((btn, index) => {
         btn.addEventListener("click", () => {
-            console.log("added to card:", list[index].name);
+            addToCart(list[index], 1)
             // add logic here soon
         });
     });
