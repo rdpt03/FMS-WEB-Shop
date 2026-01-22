@@ -15,7 +15,7 @@ export function initArticlesView() {
 export function renderArticles(list) {
     //get container
     const container = document.getElementById("articles-container");
-    if (!container){ console.error("unknown ERROR ON load-articles.js "); return;}; //check
+    if (!container){ console.error("articles-container not found, please load this file after the html via the router"); return;}; //check
 
     //clean actual list
     container.innerHTML = ""; 
