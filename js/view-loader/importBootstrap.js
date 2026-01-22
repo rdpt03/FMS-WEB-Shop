@@ -1,4 +1,4 @@
-// Função para adicionar CSS no <head>
+// Function to add CSS
 function loadCSS(href) {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
@@ -6,11 +6,11 @@ function loadCSS(href) {
   document.head.appendChild(link);
 }
 
-// Função para adicionar JS no <head> ou <body>
+// function to add js
 function loadJS(src) {
   const script = document.createElement('script');
   script.src = src;
-  document.body.appendChild(script); // ou document.head se preferir
+  document.body.appendChild(script); 
 }
 
 // Bootstrap CSS
