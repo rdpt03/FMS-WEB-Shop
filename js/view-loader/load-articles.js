@@ -1,7 +1,7 @@
 import { getArticleByCategoryId, getArticleBySubCategoryId, getArticles } from "./../localStorage/loadData.js"
 
 let articles = [];
-
+//-----------OLD
 //get url params
 const params = new URLSearchParams(window.location.search);
 
@@ -25,6 +25,8 @@ else if(filterBy == 'sub_category'){
 else{
     articles = getArticles();
 }
+//------------new to replace old
+articles = getArticles();
 
 //get container
 const container = document.getElementById("articles-container");
