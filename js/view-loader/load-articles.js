@@ -1,17 +1,23 @@
 import { getArticles } from "./../localStorage/loadData.js"
 
-//get the articles
-let articles = getArticles();
 
-//get container
-const container = document.getElementById("articles-container");
+export function initArticlesView() {
+    //load articles list
+    const articles = getArticles();
+    
+    //check if container got
+    
 
-//render the articles
-renderArticles(articles)
-
+    renderArticles(articles,);
+}
 //function to render it 
 export function renderArticles(list) {
-    container.innerHTML = ""; // clean actual articles
+    //get container
+    const container = document.getElementById("articles-container");
+    if (!container){ console.error("unknown ERROR ON load-articles.js "); return;}; //check
+
+    //clean actual list
+    container.innerHTML = ""; 
 
     list.forEach(article => {
         const col = document.createElement("div");
