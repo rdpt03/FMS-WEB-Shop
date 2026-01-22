@@ -36,6 +36,25 @@ fetch('./../components/sidebar/')
       const li = document.createElement("li");
       li.classList.add("nav-item");
 
+      //if buttons not exists
+      if (!navUl.querySelector(".nav-link.tous")) {
+        //create button
+          const allBtn = document.createElement("li");
+          allBtn.classList.add("nav-item");
+          const allLink = document.createElement("a");
+          allLink.href = "#";
+          allLink.textContent = "Tous";
+          allLink.classList.add("nav-link", "text-white", "fw-bold", "tous");
+          allLink.addEventListener("click", e => {
+              e.preventDefault();
+              renderArticles(articles);//load articles
+          });
+          //apply button
+          allBtn.appendChild(allLink);
+          navUl.prepend(allBtn);
+      }
+
+
       // Category link
       const categoryLink = document.createElement("a");
       categoryLink.href = '#';
@@ -43,7 +62,7 @@ fetch('./../components/sidebar/')
         e.preventDefault();
         const filtered = articles.filter(a => a.subCategory.category.id === category.id);
         renderArticles(filtered);
-      });
+        });
 
       categoryLink.textContent = category.name;
       categoryLink.classList.add("nav-link", "text-white");
